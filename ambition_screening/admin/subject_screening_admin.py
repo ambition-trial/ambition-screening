@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from simple_history.admin import SimpleHistoryAdmin
 
 from ..admin_site import ambition_screening_admin
 from ..forms import SubjectScreeningForm
@@ -8,7 +9,7 @@ from .modeladmin_mixins import ModelAdminMixin
 
 
 @admin.register(SubjectScreening, site=ambition_screening_admin)
-class SubjectScreeningAdmin(ModelAdminMixin, admin.ModelAdmin):
+class SubjectScreeningAdmin(ModelAdminMixin, SimpleHistoryAdmin, admin.ModelAdmin):
 
     form = SubjectScreeningForm
 
