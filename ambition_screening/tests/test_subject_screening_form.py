@@ -1,12 +1,13 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
+from copy import copy
 from django.test import TestCase, tag
+from edc_base.utils import get_utcnow
 from edc_constants.constants import YES, FEMALE, NO, NOT_APPLICABLE, MALE, NORMAL
 
 from ..forms import SubjectScreeningForm
-from edc_base.utils import get_utcnow
-from copy import copy
 
 
-class TestSubjectScreeningForm(TestCase):
+class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
 
     def setUp(self):
         self.male_data = dict(

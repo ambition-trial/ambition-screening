@@ -1,3 +1,4 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from copy import copy
 from django.test import TestCase, tag
 from edc_constants.constants import FEMALE
@@ -5,7 +6,7 @@ from edc_constants.constants import FEMALE
 from ..eligibility import Eligibility, EligibilityError
 
 
-class TestEligibility(TestCase):
+class TestEligibility(AmbitionTestCaseMixin, TestCase):
 
     def setUp(self):
         self.evaluator_criteria = dict(

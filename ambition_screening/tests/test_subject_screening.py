@@ -1,5 +1,5 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from django.test import TestCase, tag
-from edc_base.tests import SiteTestCaseMixin
 from edc_constants.constants import FEMALE, YES, NORMAL, NO, MALE, NOT_APPLICABLE
 from edc_form_validators.base_form_validator import NOT_APPLICABLE_ERROR
 from model_mommy import mommy
@@ -7,9 +7,8 @@ from model_mommy import mommy
 from ..models import SubjectScreening
 
 
-class TestSubjectScreening(SiteTestCaseMixin, TestCase):
+class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
 
-    @tag('1')
     def test_eligible_with_default_recipe_criteria(self):
         subject_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')
