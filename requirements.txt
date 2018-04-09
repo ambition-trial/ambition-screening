@@ -12,7 +12,6 @@ git+https://github.com/clinicedc/edc-search.git@develop#egg=edc_search
 git+https://github.com/clinicedc/edc-visit-schedule.git@develop#egg=edc-visit-schedule
 git+https://github.com/clinicedc/edc-visit-tracking.git@develop#egg=edc-visit-tracking
 git+https://github.com/erikvw/django-revision.git@develop#egg=django_revision
-git+https://github.com/erikvw/django-simple-history.git@master#egg=django_simple_history
 git+https://github.com/clinicedc/edc-metadata.git@develop#egg=edc_metadata
 git+https://github.com/clinicedc/edc-metadata-rules.git@develop#egg=edc_metadata_rules
 git+https://github.com/clinicedc/edc-reference.git@develop#egg=edc-reference
