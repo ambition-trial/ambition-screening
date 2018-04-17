@@ -6,6 +6,7 @@ python:
 addons:
   apt_packages:
      - libcups2-dev
+  hostname: short-hostname
 
 services:
 - mysql
