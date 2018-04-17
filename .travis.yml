@@ -1,12 +1,14 @@
 language: python
 
+sudo: true
+
 python:
 - 3.6
 
 addons:
   apt_packages:
      - libcups2-dev
-  hostname: short-hostname
+  hostname: ambition
 
 services:
 - mysql
