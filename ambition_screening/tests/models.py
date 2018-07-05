@@ -1,17 +1,18 @@
 from django.db import models
 from django.db.models.deletion import PROTECT
 from edc_reportable.units import TEN_X_9_PER_LITER, IU_LITER
+from edc_base.model_mixins import BaseUuidModel
 
 
-class SubjectVisit(models.Model):
+class SubjectVisit(BaseUuidModel):
 
     screening_identifier = models.CharField(max_length=50)
 
     subject_identifier = models.CharField(max_length=50)
 
-    visit_code = models.CharField(max_length=25)
+    visit_code = models.CharField(max_length=50)
 
-    visit_code_sequence = models.IntegerField(default=0)
+    visit_code_sequence = models.CharField(max_length=50)
 
 
 class BloodResult(models.Model):

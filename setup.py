@@ -16,7 +16,7 @@ setup(
     author_email='erikvW@gmail.com',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/ambition-study/ambition-screening',
+    url='https://github.com/ambition-trial/ambition-screening',
     license='GPL license, see LICENSE',
     description='Determine a subject\'s eligibility.',
     long_description=README,
