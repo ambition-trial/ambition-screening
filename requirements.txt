@@ -6,6 +6,7 @@ git+https://github.com/ambition-trial/ambition-rando.git@develop#egg=ambition_ra
 git+https://github.com/ambition-trial/ambition-ae.git@develop#egg=ambition-ae
 git+https://github.com/ambition-trial/ambition-reference.git@develop#egg=ambition_reference
 git+https://github.com/ambition-trial/ambition-prn.git@develop#egg=ambition-prn
+git+https://github.com/ambition-trial/ambition-sites.git@develop#egg=ambition-sites
 git+https://github.com/ambition-trial/ambition-subject.git@develop#egg=ambition-subject
 git+https://github.com/ambition-trial/ambition-validators@develop#egg=ambition_validators
 git+https://github.com/ambition-trial/ambition-visit-schedule.git@develop#egg=ambition_visit_schedule
