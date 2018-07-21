@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'edc_identifier.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
     'edc_device.apps.AppConfig',
-    'django_offline.apps.AppConfig',
-    'django_offline_files.apps.AppConfig',
+    'django_collect_offline.apps.AppConfig',
+    'django_collect_offline_files.apps.AppConfig',
     'ambition_rando.apps.AppConfig',
     'ambition_screening.apps.EdcFacilityAppConfig',
     'ambition_screening.apps.AppConfig',
@@ -129,14 +129,15 @@ DASHBOARD_URL_NAMES = {
     'subject_dashboard_url': 'ambition_dashboard:subject_dashboard_url',
 }
 
-RANDOMIZATION_LIST_PATH = os.path.join(BASE_DIR, 'test_randomization_list.csv')
+RANDOMIZATION_LIST_PATH = os.path.join(
+    BASE_DIR, APP_NAME, 'tests', 'test_randomization_list.csv')
 COUNTRY = 'botswana'
-HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')
+HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'tests', 'holidays.csv')
 
 EDC_SYNC_SERVER_IP = None
-DJANGO_OFFLINE_FILES_REMOTE_HOST = None
-DJANGO_OFFLINE_FILES_USER = None
-DJANGO_OFFLINE_FILES_USB_VOLUME = None
+DJANGO_COLLECT_OFFLINE_FILES_REMOTE_HOST = None
+DJANGO_COLLECT_OFFLINE_FILES_USER = None
+DJANGO_COLLECT_OFFLINE_FILES_USB_VOLUME = None
 
 if 'test' in sys.argv:
 
