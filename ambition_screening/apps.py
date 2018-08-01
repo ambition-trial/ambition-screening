@@ -8,6 +8,7 @@ class AppConfig(DjangoApponfig):
     verbose_name = 'Ambition Subject Screening'
     screening_age_adult_upper = 99
     screening_age_adult_lower = 18
+    include_in_administration_section = True
 
 
 if settings.APP_NAME == 'ambition_screening':
