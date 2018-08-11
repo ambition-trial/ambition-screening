@@ -25,6 +25,14 @@ setup(
     long_description=README,
     zip_safe=False,
     keywords='django ambition eligibility edc clinical trials',
+    install_requires=[
+        'edc-base',
+        'edc_facility',
+        'edc_form_validators',
+        'edc_model_admin',
+        'edc_reportable',
+        'edc_search',
+    ],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
