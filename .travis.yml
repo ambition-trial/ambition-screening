@@ -19,6 +19,7 @@ branches:
   - develop
 install:
 - pip install --upgrade pip
+- pip install -e .
 - pip install -r requirements.txt
 - pip install coveralls
 - pip install flake8
