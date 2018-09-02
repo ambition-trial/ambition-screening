@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'edc_base.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
+    'edc_registration.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'django_collect_offline.apps.AppConfig',
     'django_collect_offline_files.apps.AppConfig',
