@@ -9,6 +9,7 @@ class AppConfig(DjangoApponfig):
     screening_age_adult_upper = 99
     screening_age_adult_lower = 18
     include_in_administration_section = True
+    has_exportable_data = True
 
 
 if settings.APP_NAME == 'ambition_screening':
