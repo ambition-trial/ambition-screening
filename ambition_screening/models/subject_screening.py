@@ -213,7 +213,6 @@ class SubjectScreening(SubjectIdentifierModelMixin, SiteModelMixin, BaseUuidMode
 
     def natural_key(self):
         return (self.screening_identifier, )
-    natural_key.dependencies = ['sites.Site']
 
     def get_search_slug_fields(self):
         return ['screening_identifier', 'subject_identifier', 'reference']
