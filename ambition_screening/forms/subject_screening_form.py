@@ -1,4 +1,4 @@
-from ambition_validators import SubjectScreeningFormValidator
+from ambition_form_validators import SubjectScreeningFormValidator
 from django import forms
 from edc_form_validators import FormValidatorMixin
 
