@@ -61,6 +61,22 @@ class TestEarlyWithdrawalEvaluator(AmbitionTestCaseMixin, TestCase):
         self.assertTrue(platelets_ref.in_bounds(50, units=TEN_X_9_PER_LITER))
         self.assertTrue(platelets_ref.in_bounds(51, units=TEN_X_9_PER_LITER))
 
+    @tag('1')
+    def test_with_day1_blood_result_none(self):
+        subject_screening = mommy.make_recipe(
+            'ambition_screening.subjectscreening')
+        subject_identifier = '12345'
+        subject_visit = SubjectVisit.objects.create(
+            subject_identifier=subject_identifier,
+            screening_identifier=subject_screening.screening_identifier,
+            visit_code=DAY1, visit_code_sequence=0)
+
+        BloodResult.objects.create(
+            subject_visit=subject_visit)
+        obj = EarlyWithdrawalEvaluator(
+            subject_identifier=subject_identifier, allow_none=True)
+        self.assertTrue(obj.eligible)
+
     def test_with_day1_blood_result1(self):
         subject_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')
