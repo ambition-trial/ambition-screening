@@ -11,17 +11,14 @@ class TestNaturalKey(AmbitionTestCaseMixin, TestCase):
 
     offline_test_helper = OfflineTestHelper()
 
-    @tag('1')
     def test_natural_key_attrs(self):
         self.offline_test_helper.offline_test_natural_key_attr(
             'ambition_screening')
 
-    @tag('1')
     def test_get_by_natural_key_attr(self):
         self.offline_test_helper.offline_test_get_by_natural_key_attr(
             'ambition_screening')
 
-    @tag('1')
     def test_deserialize_subject_screening(self):
         ambition_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')
