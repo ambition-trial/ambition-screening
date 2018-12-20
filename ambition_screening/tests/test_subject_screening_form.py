@@ -61,20 +61,21 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
         options = [
             (NO, None, NO, 'preg_test_date'),
             (NO, None, YES, 'preg_test_date'),
-            (YES, None, YES, 'preg_test_date'),
+            (YES, None, YES, None),
             (NO, get_utcnow().date(), NO, None),
             (YES, get_utcnow().date(), NO, None),
             (YES, get_utcnow().date(), YES, None),
-            (YES, get_utcnow().date(), NOT_APPLICABLE, 'breast_feeding'),
+            (YES, get_utcnow().date(), NOT_APPLICABLE, None),
             (NOT_APPLICABLE, get_utcnow().date(),
              NOT_APPLICABLE, 'preg_test_date'),
-            (NOT_APPLICABLE, None,
-             NOT_APPLICABLE, 'pregnancy'),
+            (NOT_APPLICABLE, None, NOT_APPLICABLE, None),
         ]
         for pregnancy, preg_test_date, breast_feeding, error_key in options:
             with self.subTest(
-                    pregnancy=pregnancy, preg_test_date=preg_test_date,
-                    breast_feeding=breast_feeding, error_key=error_key):
+                    pregnancy=pregnancy,
+                    preg_test_date=preg_test_date,
+                    breast_feeding=breast_feeding,
+                    error_key=error_key):
                 data.update(
                     pregnancy=pregnancy,
                     preg_test_date=preg_test_date,
@@ -85,18 +86,6 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
                     self.assertIn(error_key, form.errors)
                 else:
                     self.assertFalse(form.errors)
-
-    def test_female_no_preg_test_dates(self):
-        data = copy(self.female_data)
-        data.update(
-            pregnancy=YES,
-            preg_test_date=None,
-            breast_feeding=NO,
-        )
-        form = SubjectScreeningForm(data=data)
-        form.is_valid()
-        self.assertEqual(
-            form.errors, {'preg_test_date': ['This field is required.']})
 
     def test_male_pregnancy_yes(self):
         data = copy(self.male_data)
