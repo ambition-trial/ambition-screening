@@ -5,35 +5,59 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('ambition_screening', '0001_initial'),
-    ]
+    dependencies = [("ambition_screening", "0001_initial")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='historicalsubjectscreening',
-            options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical subject screening'},
+            name="historicalsubjectscreening",
+            options={
+                "get_latest_by": "history_date",
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical subject screening",
+            },
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='reasons_unsuitable',
-            field=models.TextField(blank=True, max_length=150, null=True, verbose_name='Reason not eligible'),
+            model_name="historicalsubjectscreening",
+            name="reasons_unsuitable",
+            field=models.TextField(
+                blank=True,
+                max_length=150,
+                null=True,
+                verbose_name="Reason not eligible",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='unsuitable_for_study',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], default='No', help_text='If YES, patient NOT eligible, please give reason below.', max_length=5, verbose_name='Is there any other reason the patient is deemed to not be suitable for the study?'),
+            model_name="historicalsubjectscreening",
+            name="unsuitable_for_study",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                default="No",
+                help_text="If YES, patient NOT eligible, please give reason below.",
+                max_length=5,
+                verbose_name="Is there any other reason the patient is deemed to not be suitable for the study?",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='reasons_unsuitable',
-            field=models.TextField(blank=True, max_length=150, null=True, verbose_name='Reason not eligible'),
+            model_name="subjectscreening",
+            name="reasons_unsuitable",
+            field=models.TextField(
+                blank=True,
+                max_length=150,
+                null=True,
+                verbose_name="Reason not eligible",
+            ),
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='unsuitable_for_study',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], default='No', help_text='If YES, patient NOT eligible, please give reason below.', max_length=5, verbose_name='Is there any other reason the patient is deemed to not be suitable for the study?'),
+            model_name="subjectscreening",
+            name="unsuitable_for_study",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                default="No",
+                help_text="If YES, patient NOT eligible, please give reason below.",
+                max_length=5,
+                verbose_name="Is there any other reason the patient is deemed to not be suitable for the study?",
+            ),
             preserve_default=False,
         ),
     ]

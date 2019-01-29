@@ -7,7 +7,6 @@ from edc_reportable import IU_LITER, TEN_X_9_PER_LITER
 
 
 class MyAgeEvaluator(AgeEvaluator):
-
     def __init__(self, **kwargs):
         self.reasons_ineligible = None
         super().__init__(**kwargs)
@@ -19,7 +18,7 @@ class MyAgeEvaluator(AgeEvaluator):
             try:
                 self.in_bounds_or_raise(age=age)
             except ValueBoundryError:
-                self.reasons_ineligible = 'age<18.'
+                self.reasons_ineligible = "age<18."
             else:
                 eligible = True
         return eligible
@@ -27,18 +26,17 @@ class MyAgeEvaluator(AgeEvaluator):
     def in_bounds_or_raise(self, age=None):
         self.reasons_ineligible = None
         dob = localtime(get_utcnow() - relativedelta(years=age)).date()
-        age_units = 'years'
+        age_units = "years"
         report_datetime = localtime(get_utcnow())
         return super().in_bounds_or_raise(
-            dob=dob, report_datetime=report_datetime, age_units=age_units)
+            dob=dob, report_datetime=report_datetime, age_units=age_units
+        )
 
 
-age_evaluator = MyAgeEvaluator(
-    age_lower=18,
-    age_lower_inclusive=True)
+age_evaluator = MyAgeEvaluator(age_lower=18, age_lower_inclusive=True)
 
 alt_ref = NormalReference(
-    name='alt',
+    name="alt",
     upper=200,
     upper_inclusive=True,
     units=IU_LITER,
@@ -49,7 +47,7 @@ alt_ref = NormalReference(
 
 
 neutrophil_ref = NormalReference(
-    name='neutrophil',
+    name="neutrophil",
     lower=0.5,
     lower_inclusive=True,
     units=TEN_X_9_PER_LITER,
@@ -60,7 +58,7 @@ neutrophil_ref = NormalReference(
 
 
 platelets_ref = NormalReference(
-    name='platelets',
+    name="platelets",
     lower=50,
     lower_inclusive=True,
     units=TEN_X_9_PER_LITER,

@@ -8,10 +8,9 @@ from ..forms import SubjectScreeningForm
 
 
 class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
-
     def setUp(self):
         self.male_data = dict(
-            subject_identifier='12345',
+            subject_identifier="12345",
             report_datetime=get_utcnow(),
             gender=MALE,
             age_in_years=25,
@@ -25,10 +24,11 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
             contraindicated_meds=NO,
             received_amphotericin=NO,
             received_fluconazole=NO,
-            unsuitable_for_study=NO)
+            unsuitable_for_study=NO,
+        )
 
         self.female_data = dict(
-            subject_identifier='678910',
+            subject_identifier="678910",
             report_datetime=get_utcnow(),
             gender=FEMALE,
             age_in_years=25,
@@ -43,7 +43,8 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
             contraindicated_meds=NO,
             received_amphotericin=NO,
             received_fluconazole=NO,
-            unsuitable_for_study=NO)
+            unsuitable_for_study=NO,
+        )
 
     def test_default_ok(self):
         form = SubjectScreeningForm(data=self.male_data)
@@ -59,27 +60,28 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
     def test_pregnancy(self):
         data = copy(self.female_data)
         options = [
-            (NO, None, NO, 'preg_test_date'),
-            (NO, None, YES, 'preg_test_date'),
+            (NO, None, NO, "preg_test_date"),
+            (NO, None, YES, "preg_test_date"),
             (YES, None, YES, None),
             (NO, get_utcnow().date(), NO, None),
             (YES, get_utcnow().date(), NO, None),
             (YES, get_utcnow().date(), YES, None),
             (YES, get_utcnow().date(), NOT_APPLICABLE, None),
-            (NOT_APPLICABLE, get_utcnow().date(),
-             NOT_APPLICABLE, 'preg_test_date'),
+            (NOT_APPLICABLE, get_utcnow().date(), NOT_APPLICABLE, "preg_test_date"),
             (NOT_APPLICABLE, None, NOT_APPLICABLE, None),
         ]
         for pregnancy, preg_test_date, breast_feeding, error_key in options:
             with self.subTest(
-                    pregnancy=pregnancy,
-                    preg_test_date=preg_test_date,
-                    breast_feeding=breast_feeding,
-                    error_key=error_key):
+                pregnancy=pregnancy,
+                preg_test_date=preg_test_date,
+                breast_feeding=breast_feeding,
+                error_key=error_key,
+            ):
                 data.update(
                     pregnancy=pregnancy,
                     preg_test_date=preg_test_date,
-                    breast_feeding=breast_feeding)
+                    breast_feeding=breast_feeding,
+                )
                 form = SubjectScreeningForm(data=data)
                 form.is_valid()
                 if error_key:
@@ -92,5 +94,4 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
         data.update(pregnancy=YES)
         form = SubjectScreeningForm(data=data)
         form.is_valid()
-        self.assertEqual(
-            form.errors, {'pregnancy': ['This field is not applicable']})
+        self.assertEqual(form.errors, {"pregnancy": ["This field is not applicable"]})

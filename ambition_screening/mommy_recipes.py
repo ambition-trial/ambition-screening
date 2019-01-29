@@ -24,4 +24,5 @@ subjectscreening = Recipe(
     received_amphotericin=NO,
     received_fluconazole=NO,
     unsuitable_for_study=NO,
-    site=Site.objects.get_current())
+    site=Site.objects.get_current(),
+)
