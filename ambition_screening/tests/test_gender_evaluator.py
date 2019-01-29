@@ -6,7 +6,6 @@ from ..eligibility import GenderEvaluator
 
 
 class TestGenderEvaluator(AmbitionTestCaseMixin, TestCase):
-
     def test_eligibility_gender(self):
         gender_evaluator = GenderEvaluator()
         self.assertFalse(gender_evaluator.eligible)
@@ -16,25 +15,26 @@ class TestGenderEvaluator(AmbitionTestCaseMixin, TestCase):
         self.assertTrue(gender_evaluator.eligible)
 
         gender_evaluator = GenderEvaluator(
-            gender=FEMALE, pregnant=False, breast_feeding=True)
+            gender=FEMALE, pregnant=False, breast_feeding=True
+        )
         self.assertFalse(gender_evaluator.eligible)
 
         gender_evaluator = GenderEvaluator(
-            gender=FEMALE, pregnant=True, breast_feeding=False)
+            gender=FEMALE, pregnant=True, breast_feeding=False
+        )
         self.assertFalse(gender_evaluator.eligible)
 
         gender_evaluator = GenderEvaluator(
-            gender=FEMALE, pregnant=False, breast_feeding=False)
+            gender=FEMALE, pregnant=False, breast_feeding=False
+        )
         self.assertTrue(gender_evaluator.eligible)
 
     def test_eligibility_gender_reasons_ineligibles(self):
         gender_evaluator = GenderEvaluator()
-        self.assertIn('None is an invalid gender.',
-                      gender_evaluator.reasons_ineligible)
+        self.assertIn("None is an invalid gender.", gender_evaluator.reasons_ineligible)
         gender_evaluator = GenderEvaluator(gender=FEMALE, pregnant=True)
-        self.assertIn('pregnant.', gender_evaluator.reasons_ineligible)
-        gender_evaluator = GenderEvaluator(gender='DOG')
-        self.assertIn('DOG is an invalid gender.',
-                      gender_evaluator.reasons_ineligible)
+        self.assertIn("pregnant.", gender_evaluator.reasons_ineligible)
+        gender_evaluator = GenderEvaluator(gender="DOG")
+        self.assertIn("DOG is an invalid gender.", gender_evaluator.reasons_ineligible)
         gender_evaluator = GenderEvaluator(gender=MALE)
         self.assertIsNone(gender_evaluator.reasons_ineligible)
