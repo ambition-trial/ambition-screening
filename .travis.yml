@@ -10,21 +10,29 @@ sudo: true
 addons:
   apt_packages:
   - libcups2-dev
-  hostname: ambition
+
 services:
 - mysql
-branches:
-  only:
-  - develop
+
 install:
 - pip install --upgrade pip
-- pip install -e .
-- pip install -r requirements.txt
-- pip install flake8 coveralls
+- pip install flake8 coveralls tox-travis
+
 before_script:
-- flake8 ambition-screening
+- flake8 ambition_screening
 - mysql -e 'create database edc character set utf8;'
+
 script:
-- coverage run --source=ambition_screening manage.py test
+- coverage run -m tox
+
 after_success:
-- coveralls
+- codecov
+
+matrix:
+  include:
+    - python: 3.7
+      env: TOXENV=py37-django21
+    - python: 3.7
+      env: TOXENV=py37-django22
+    - python: 3.7
+      env: TOXENV=py37-djangotrunk

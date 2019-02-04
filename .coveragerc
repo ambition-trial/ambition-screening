@@ -1,10 +1,4 @@
 [run]
-omit =
-    */wsgi.py
-    setup.py
-    manage.py
-    */migrations/*
-    */mommy_*
-    venv/*
-    runtests.py
-    .tox/*
+include = ambition_screening/*
+omit = ambition_screening/tests/*
+branch = 1
