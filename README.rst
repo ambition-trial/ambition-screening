@@ -1,4 +1,4 @@
-|pypi| |travis| |coverage|
+|pypi| |travis| |codecov| |downloads|
 
 
 ambition-screening
@@ -14,5 +14,8 @@ Subject Screening models and views
 .. |travis| image:: https://travis-ci.com/ambition-trial/ambition-screening.svg?branch=develop
     :target: https://travis-ci.com/ambition-trial/ambition-screening
     
-.. |coverage| image:: https://coveralls.io/repos/github/ambition-trial/ambition-screening/badge.svg?branch=develop
-    :target: https://coveralls.io/github/ambition-trial/ambition-screening?branch=develop
+.. |codecov| image:: https://codecov.io/gh/ambition-trial/ambition-screening/branch/develop/graph/badge.svg
+  :target: https://codecov.io/gh/ambition-trial/ambition-screening
+
+.. |downloads| image:: https://pepy.tech/badge/ambition-screening
+   :target: https://pepy.tech/project/ambition-screening
