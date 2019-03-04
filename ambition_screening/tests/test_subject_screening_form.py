@@ -1,7 +1,7 @@
 from ambition_rando.tests import AmbitionTestCaseMixin
 from copy import copy
 from django.test import TestCase, tag
-from edc_base.utils import get_utcnow
+from edc_utils import get_utcnow
 from edc_constants.constants import YES, FEMALE, NO, NOT_APPLICABLE, MALE, NORMAL
 
 from ..forms import SubjectScreeningForm

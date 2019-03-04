@@ -2,15 +2,14 @@ import re
 
 from dateutil.relativedelta import relativedelta
 from django.db import models
-from edc_base.model_managers import HistoricalRecords
-from edc_base.model_mixins import BaseUuidModel
-from edc_base.sites import CurrentSiteManager, SiteModelMixin
-from edc_base.utils import get_utcnow
 from edc_constants.choices import GENDER, YES_NO, YES_NO_NA, NORMAL_ABNORMAL
 from edc_constants.constants import UUID_PATTERN
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
+from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_reportable import IU_LITER, TEN_X_9_PER_LITER
 from edc_search.model_mixins import SearchSlugManager, SearchSlugModelMixin
+from edc_sites.models import CurrentSiteManager, SiteModelMixin
+from edc_utils import get_utcnow
 from uuid import uuid4
 
 from ..choices import PREG_YES_NO_NA

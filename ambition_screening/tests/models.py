@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import PROTECT
+from edc_model.models import BaseUuidModel
 from edc_reportable.units import TEN_X_9_PER_LITER, IU_LITER
-from edc_base.model_mixins import BaseUuidModel
 
 
 class SubjectVisit(BaseUuidModel):
