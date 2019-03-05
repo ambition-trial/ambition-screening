@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.utils.timezone import localtime
-from edc_base.utils import get_utcnow
+from edc_utils import get_utcnow
 from edc_constants.constants import FEMALE, MALE
 from edc_reportable import AgeEvaluator, NormalReference, ValueBoundryError
 from edc_reportable import IU_LITER, TEN_X_9_PER_LITER

@@ -1,5 +1,4 @@
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
-from edc_base.sites import ModelAdminSiteMixin
 from edc_model_admin import (
     ModelAdminNextUrlRedirectMixin,
     ModelAdminFormInstructionsMixin,
@@ -10,6 +9,7 @@ from edc_model_admin import (
     ModelAdminRedirectOnDeleteMixin,
 )
 from edc_metadata import NextFormGetter
+from edc_sites.admin import ModelAdminSiteMixin
 
 
 class ModelAdminMixin(
