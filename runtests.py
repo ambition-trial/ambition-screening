@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import django
 import logging
+import os
 import sys
 
 from django.conf import settings
@@ -100,11 +101,35 @@ DEFAULT_SETTINGS = dict(
     RANDOMIZATION_LIST_PATH=join(
         base_dir, app_name, 'tests', 'test_randomization_list.csv'),
     SITE_ID=40,
+    EMAIL_CONTACTS={},
 
     DEFAULT_FILE_STORAGE='inmemorystorage.InMemoryStorage',
     MIGRATION_MODULES=DisableMigrations(),
     PASSWORD_HASHERS=('django.contrib.auth.hashers.MD5PasswordHasher', ),
 )
+
+# update settings if running runtests directly from the command line
+if __file__ == sys.argv[0]:
+    key_path = os.path.join(base_dir, 'etc')
+    DEFAULT_SETTINGS.update(
+        DEBUG=False,
+        KEY_PATH=key_path,
+        AUTO_CREATE_KEYS=False)
+    if len(os.listdir(key_path)) == 0:
+        DEFAULT_SETTINGS.update(AUTO_CREATE_KEYS=True)
+
+if os.environ.get("TRAVIS"):
+    DEFAULT_SETTINGS.update(
+        DATABASES={
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'edc',
+                'USER': 'travis',
+                'PASSWORD': '',
+                'HOST': 'localhost',
+                'PORT': '',
+            },
+        })
 
 
 def main():

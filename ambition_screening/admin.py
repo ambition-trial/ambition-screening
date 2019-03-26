@@ -1,21 +1,19 @@
-from django.conf import settings
 from django.contrib import admin
 from edc_model_admin import SimpleHistoryAdmin
+from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from ..admin_site import ambition_screening_admin
-from ..forms import SubjectScreeningForm
-from ..models import SubjectScreening
-from .modeladmin_mixins import ModelAdminMixin
+from .admin_site import ambition_screening_admin
+from .forms import SubjectScreeningForm
+from .models import SubjectScreening
 
 
 @admin.register(SubjectScreening, site=ambition_screening_admin)
-class SubjectScreeningAdmin(ModelAdminMixin, SimpleHistoryAdmin):
+class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
 
     form = SubjectScreeningForm
 
-    post_url_on_delete_name = settings.DASHBOARD_URL_NAMES.get(
-        "screening_dashboard_url"
-    )
+    post_url_on_delete_name = "screening_dashboard_url"
+    subject_listboard_url_name = "screening_listboard_url"
 
     radio_fields = {
         "gender": admin.VERTICAL,
