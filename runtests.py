@@ -31,7 +31,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'django_crypto_fields.apps.AppConfig',
         'rest_framework',
         'rest_framework.authtoken',
-        'edc_base.apps.AppConfig',
         'edc_identifier.apps.AppConfig',
         'edc_protocol.apps.AppConfig',
         'edc_registration.apps.AppConfig',

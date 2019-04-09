@@ -1,3 +1,0 @@
-edc-registration
-faker
-model-mommy
