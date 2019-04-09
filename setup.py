@@ -10,7 +10,7 @@ with open(join(dirname(__file__), 'README.rst')) as readme:
 with open(join(dirname(__file__), 'VERSION')) as f:
     VERSION = f.read()
 
-tests_require = ["pytest"]
+tests_require = []
 with open(join(dirname(abspath(__file__)), 'requirements.txt')) as f:
     for line in f:
         tests_require.append(line.strip())
@@ -36,7 +36,6 @@ setup(
         'ambition-visit-schedule',
         'django-collect-offline',
         'django-collect-offline-files',
-        'edc-base',
         'edc-constants',
         'edc-identifier',
         'edc-facility',
