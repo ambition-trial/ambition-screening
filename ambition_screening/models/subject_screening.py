@@ -4,6 +4,7 @@ from dateutil.relativedelta import relativedelta
 from django.db import models
 from edc_constants.choices import GENDER, YES_NO, YES_NO_NA, NORMAL_ABNORMAL
 from edc_constants.constants import UUID_PATTERN
+from edc_identifier import is_subject_identifier_or_raise
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_reportable import IU_LITER, TEN_X_9_PER_LITER
@@ -26,12 +27,22 @@ class SubjectIdentifierModelMixin(
     NonUniqueSubjectIdentifierModelMixin, SearchSlugModelMixin, models.Model
 ):
     def update_subject_identifier_on_save(self):
-        """Overridden to not set the subject identifier on save.
+        """Overridden to not create a new study-allocated subject identifier on save.
+
+        Instead just set subject_identifier to a UUID for uniqueness
+        from subject_identifier_as_pk.
+
+        The subject_identifier will be set upon consent.
         """
         if not self.subject_identifier:
             self.subject_identifier = self.subject_identifier_as_pk.hex
-        elif re.match(UUID_PATTERN, self.subject_identifier):
-            pass
+        else:
+            # validate it is either a valid subject identifier or a
+            # uuid/uuid.hex
+            if not re.match(UUID_PATTERN, self.subject_identifier):
+                is_subject_identifier_or_raise(
+                    self.subject_identifier, reference_obj=self
+                )
         return self.subject_identifier
 
     def make_new_identifier(self):
