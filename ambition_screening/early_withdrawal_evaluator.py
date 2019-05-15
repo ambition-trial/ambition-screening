@@ -55,7 +55,8 @@ class EarlyWithdrawalEvaluator:
         if not alt and not neutrophil and not platelets and self.allow_none:
             self.eligible = True
             if self.request:
-                messages.warning(self.request, "Screening blood results are required.")
+                messages.warning(
+                    self.request, "Screening blood results are required.")
         elif not alt and not neutrophil and not platelets and not self.allow_none:
             self.eligible = False
         else:
@@ -81,7 +82,8 @@ class EarlyWithdrawalEvaluator:
                         f"Ref: {platelets_ref.description()}."
                     )
                 )
-            self.eligible = True if len(self.reasons_ineligible) == 0 else False
+            self.eligible = True if len(
+                self.reasons_ineligible) == 0 else False
         return None
 
     @property

@@ -225,7 +225,7 @@ class SubjectScreening(SubjectIdentifierModelMixin, SiteModelMixin, BaseUuidMode
                 v for v in eligibility_obj.reasons_ineligible.values() if v
             ]
             reasons_ineligible.sort()
-            self.reasons_ineligible = ",".join(reasons_ineligible)
+            self.reasons_ineligible = "|".join(reasons_ineligible)
         else:
             self.reasons_ineligible = None
         if not self.id:
