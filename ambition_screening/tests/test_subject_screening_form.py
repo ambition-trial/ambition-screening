@@ -7,10 +7,11 @@ from edc_constants.constants import YES, FEMALE, NO, NOT_APPLICABLE, MALE, NORMA
 from ..forms import SubjectScreeningForm
 
 
+@tag("1")
 class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
     def setUp(self):
         self.male_data = dict(
-            subject_identifier="12345",
+            subject_identifier="092-20990003-1",
             report_datetime=get_utcnow(),
             gender=MALE,
             age_in_years=25,
@@ -28,7 +29,7 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
         )
 
         self.female_data = dict(
-            subject_identifier="678910",
+            subject_identifier="092-20990004-2",
             report_datetime=get_utcnow(),
             gender=FEMALE,
             age_in_years=25,
@@ -94,4 +95,4 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
         data.update(pregnancy=YES)
         form = SubjectScreeningForm(data=data)
         form.is_valid()
-        self.assertEqual(form.errors, {"pregnancy": ["This field is not applicable"]})
+        self.assertEqual(form.errors, {"pregnancy": ["This field is not applicable."]})

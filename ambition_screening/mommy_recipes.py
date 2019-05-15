@@ -11,6 +11,7 @@ fake = Faker()
 subjectscreening = Recipe(
     SubjectScreening,
     report_datetime=get_utcnow(),
+    subject_identifier=None,
     gender=MALE,
     age_in_years=40,
     meningitis_dx=YES,
