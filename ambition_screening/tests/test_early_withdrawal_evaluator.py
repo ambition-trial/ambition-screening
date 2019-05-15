@@ -7,11 +7,13 @@ from model_mommy import mommy
 from ..early_withdrawal_evaluator import EarlyWithdrawalEvaluator
 from ..early_withdrawal_evaluator import alt_ref, neutrophil_ref, platelets_ref
 from .models import SubjectVisit, BloodResult
+from pprint import pprint
 
 
 EarlyWithdrawalEvaluator.blood_result_model = "ambition_screening.bloodresult"
 
 
+@tag("1")
 class TestEarlyWithdrawalEvaluator(AmbitionTestCaseMixin, TestCase):
     def test_early_withdrawal_criteria_no(self):
         """Asserts nulls or no data evaluates False by default.
@@ -41,6 +43,7 @@ class TestEarlyWithdrawalEvaluator(AmbitionTestCaseMixin, TestCase):
         self.assertTrue(alt_ref.in_bounds(200, units=IU_LITER))
         self.assertFalse(alt_ref.in_bounds(201, units=IU_LITER))
         self.assertFalse(alt_ref.in_bounds(202, units=IU_LITER))
+        print("alt_ref", alt_ref.description())
 
     def test_neutrophil_refs(self):
         """Asserts neutrophil < 0.5 not eligible.
@@ -88,6 +91,7 @@ class TestEarlyWithdrawalEvaluator(AmbitionTestCaseMixin, TestCase):
         obj = EarlyWithdrawalEvaluator(subject_identifier=subject_identifier)
         self.assertFalse(obj.eligible)
         self.assertIn("platelets", obj.reasons_ineligible)
+        self.assertNotIn("18<=AGE years", obj.reasons_ineligible.get("platelets"))
 
     def test_with_day1_blood_result2(self):
         subject_screening = mommy.make_recipe("ambition_screening.subjectscreening")
