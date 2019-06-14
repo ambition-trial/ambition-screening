@@ -2,7 +2,13 @@ import re
 
 from dateutil.relativedelta import relativedelta
 from django.db import models
-from edc_constants.choices import GENDER, YES_NO, YES_NO_NA, NORMAL_ABNORMAL
+from edc_constants.choices import (
+    GENDER,
+    YES_NO,
+    YES_NO_NA,
+    NORMAL_ABNORMAL,
+    PREG_YES_NO_NA,
+)
 from edc_constants.constants import UUID_PATTERN
 from edc_identifier import is_subject_identifier_or_raise
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
@@ -13,7 +19,6 @@ from edc_sites.models import CurrentSiteManager, SiteModelMixin
 from edc_utils import get_utcnow
 from uuid import uuid4
 
-from ..choices import PREG_YES_NO_NA
 from ..subject_screening_eligibility import SubjectScreeningEligibility
 from ..identifiers import ScreeningIdentifier
 
