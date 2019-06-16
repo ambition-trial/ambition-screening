@@ -32,6 +32,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'rest_framework',
         'rest_framework.authtoken',
         'edc_identifier.apps.AppConfig',
+        'edc_screening.apps.AppConfig',
         'edc_protocol.apps.AppConfig',
         'edc_registration.apps.AppConfig',
         'edc_device.apps.AppConfig',

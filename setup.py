@@ -43,6 +43,7 @@ setup(
         'edc-metadata',
         'edc-model-admin',
         'edc-reportable',
+        'edc-screening',
         'edc-search',
     ],
     classifiers=[
