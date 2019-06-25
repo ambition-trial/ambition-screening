@@ -1,10 +1,5 @@
 from django.db import models
-from edc_constants.choices import (
-    YES_NO,
-    YES_NO_NA,
-    NORMAL_ABNORMAL,
-    PREG_YES_NO_NA,
-)
+from edc_constants.choices import YES_NO, YES_NO_NA, NORMAL_ABNORMAL, PREG_YES_NO_NA
 from edc_model.models import BaseUuidModel
 from edc_reportable import IU_LITER, TEN_X_9_PER_LITER
 from edc_screening.model_mixins import ScreeningModelMixin
@@ -32,13 +27,6 @@ class SubjectScreening(ScreeningModelMixin, BaseUuidModel):
 
     mental_status = models.CharField(
         verbose_name="Mental status", max_length=10, choices=NORMAL_ABNORMAL
-    )
-
-    consent_ability = models.CharField(
-        verbose_name="Participant or legal guardian/representative able and "
-        "willing to give informed consent.",
-        max_length=5,
-        choices=YES_NO,
     )
 
     pregnancy = models.CharField(
