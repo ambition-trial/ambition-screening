@@ -12,7 +12,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     form = SubjectScreeningForm
 
-    post_url_on_delete_name = "screening_dashboard_url"
+    post_url_on_delete_name = "screening_listboard_url"
     subject_listboard_url_name = "screening_listboard_url"
 
     radio_fields = {
