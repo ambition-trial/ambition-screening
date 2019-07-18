@@ -56,3 +56,6 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         ),
         ("Blood Results", {"fields": ("alt", "neutrophil", "platelets")}),
     )
+
+    def post_url_on_delete_kwargs(self, request, obj):
+        return {}
