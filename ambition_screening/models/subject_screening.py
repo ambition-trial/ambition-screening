@@ -7,6 +7,10 @@ from edc_screening.model_mixins import ScreeningModelMixin
 from ..subject_screening_eligibility import SubjectScreeningEligibility
 
 
+class SubjectScreeningDeleteError(Exception):
+    pass
+
+
 class SubjectScreening(ScreeningModelMixin, BaseUuidModel):
 
     eligibility_cls = SubjectScreeningEligibility
