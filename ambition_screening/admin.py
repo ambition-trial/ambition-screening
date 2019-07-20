@@ -1,10 +1,10 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from .admin_site import ambition_screening_admin
 from .forms import SubjectScreeningForm
-from .models import SubjectScreening
+from .models import SubjectScreening, SubjectScreeningDeleteError
 
 
 @admin.register(SubjectScreening, site=ambition_screening_admin)
@@ -14,9 +14,6 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     post_url_on_delete_name = "screening_listboard_url"
     subject_listboard_url_name = "screening_listboard_url"
-
-    def unsuitable(self, obj=None):
-        return obj.get_unsuitable_for_study_display()
 
     list_display = (
         "screening_identifier",
@@ -81,3 +78,12 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     def post_url_on_delete_kwargs(self, request, obj):
         return {}
+
+    def unsuitable(self, obj=None):
+        return obj.get_unsuitable_for_study_display()
+
+    def delete_model(self, request, obj):
+        try:
+            super().delete_model(request, obj)
+        except SubjectScreeningDeleteError as e:
+            messages.add_message(request, messages.ERROR, f"{str(e)} Got `{obj}`.")
