@@ -15,6 +15,28 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     post_url_on_delete_name = "screening_listboard_url"
     subject_listboard_url_name = "screening_listboard_url"
 
+    def unsuitable(self, obj=None):
+        return obj.get_unsuitable_for_study_display()
+
+    list_display = (
+        "screening_identifier",
+        "report_datetime",
+        "consented",
+        "gender",
+        "age_in_years",
+        "mental_status",
+        "unsuitable",
+    )
+
+    list_filter = (
+        "report_datetime",
+        "consented",
+        "gender",
+        "age_in_years",
+        "mental_status",
+        "unsuitable_for_study",
+    )
+
     radio_fields = {
         "gender": admin.VERTICAL,
         "meningitis_dx": admin.VERTICAL,
