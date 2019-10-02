@@ -36,6 +36,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'edc_protocol.apps.AppConfig',
         'edc_registration.apps.AppConfig',
         'edc_device.apps.AppConfig',
+        "edc_sites.apps.AppConfig",
         'django_collect_offline.apps.AppConfig',
         'django_collect_offline_files.apps.AppConfig',
         'ambition_rando.apps.AppConfig',

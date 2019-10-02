@@ -2,7 +2,7 @@ from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_NA, NORMAL_ABNORMAL, PREG_YES_NO_NA
 from edc_model.models import BaseUuidModel
 from edc_reportable import IU_LITER, TEN_X_9_PER_LITER
-from edc_screening.model_mixins import ScreeningModelMixin
+from edc_screening.model_mixins import ScreeningModelMixin, EligibilityModelMixin
 
 from ..subject_screening_eligibility import SubjectScreeningEligibility
 
@@ -11,7 +11,7 @@ class SubjectScreeningDeleteError(Exception):
     pass
 
 
-class SubjectScreening(ScreeningModelMixin, BaseUuidModel):
+class SubjectScreening(ScreeningModelMixin, EligibilityModelMixin, BaseUuidModel):
 
     eligibility_cls = SubjectScreeningEligibility
 
@@ -112,18 +112,4 @@ class SubjectScreening(ScreeningModelMixin, BaseUuidModel):
             f"Leave blank if unknown. Units: '{TEN_X_9_PER_LITER}'. "
             f"Ineligible if < 50 {TEN_X_9_PER_LITER}"
         ),
-    )
-
-    unsuitable_for_study = models.CharField(
-        verbose_name=(
-            "Is there any other reason the patient is "
-            "deemed to not be suitable for the study?"
-        ),
-        max_length=5,
-        choices=YES_NO,
-        help_text="If YES, patient NOT eligible, please give reason below.",
-    )
-
-    reasons_unsuitable = models.TextField(
-        verbose_name="Reason not eligible", max_length=150, null=True, blank=True
     )
