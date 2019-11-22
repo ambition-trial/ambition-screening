@@ -18,8 +18,9 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
-    RANDOMIZATION_LIST_PATH=join(
-        base_dir, app_name, "tests", "test_randomization_list.csv"),
+    EDC_RANDOMIZATION_LIST_MODEL="ambition_rando.randomizationlist",
+    EDC_RANDOMIZATION_LIST_FILE=join(
+        base_dir, app_name, "tests", "etc", "randomization_list.csv"),
     INSTALLED_APPS=[
         'django.contrib.admin',
         'django.contrib.auth',
@@ -34,6 +35,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'edc_identifier.apps.AppConfig',
         'edc_screening.apps.AppConfig',
         'edc_protocol.apps.AppConfig',
+        'edc_randomization.apps.AppConfig',
         'edc_registration.apps.AppConfig',
         'edc_device.apps.AppConfig',
         "edc_sites.apps.AppConfig",
